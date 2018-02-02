@@ -13,6 +13,8 @@
 
   if ( mysqli_num_rows($result)) {
     // Hier moet een redirect komen naar de index.html pagina
+    echo "Kies een ander emailadres.";
+    header("Refresh:4; url=./index.html");
   } 
   else {
     // Dit is de query die de ingevulde gegevens kan wegschrijven naar de tabel users
@@ -27,7 +29,8 @@
 
       // echo $sql; exit();
       mysqli_query($conn, $sql);
-      header("Location: ./index.html");
+      echo "Uw registratie is geslaagd. U krijgt een email toegestuurd met een activatielink";
+      header("Refresh:2; ./index.html");
   }
   
 
