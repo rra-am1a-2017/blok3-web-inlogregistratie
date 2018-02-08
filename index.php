@@ -18,12 +18,12 @@
     <h1>Inlogregistratiesysteem</h1>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalCenter">
       Registreer
     </button>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="ModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <form method="post" action="./register.php">
@@ -61,6 +61,18 @@
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+  <?php
+    // Check of de $_GET
+    if ( isset($_GET["status"])) {
+      include("./functions/functions.php");
+      $status = sanitize($_GET["status"]);
+      if ($status == "success") {
+        echo "<script src='./js/registerform/success.js'></script>";
+      } else if ($status == "emailexists"){
+        echo "<script src='./js/registerform/emailexists.js'></script>";       
+      }
+    }
+  ?>
 </body>
 
 </html>
