@@ -45,7 +45,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Verzend</button>
             </div>
           </form>
         </div>
@@ -61,23 +61,7 @@
     crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-  <?php
-    // Check of de $_GET
-    if ( isset($_GET["status"])) {
-      include("./functions/functions.php");
-      $status = sanitize($_GET["status"]);
-
-      if ($status == "success") {
-        echo "<script src='./js/registerform/success.js'></script>";
-      } else if ($status == "emailexists"){
-        echo "<script src='./js/registerform/emailexists.js'></script>";       
-      } else if ($status == "nocheck") {
-        echo "<script src='./js/registerform/nocheck.js'></script>";               
-      } else if ($status == "emailempty") {
-        echo "<script src='./js/registerform/emailempty.js'></script>";               
-      }
-    }
-  ?>
+  <?php include("./scriptloader.php"); ?>
 </body>
 
 </html>
