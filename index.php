@@ -34,7 +34,7 @@
               </button>
             </div>
             <div class="modal-body">
-              <div class="form-group">
+              <div class="form-group" id="emailExists">
                 <label for="exampleInputEmail1">E-mailadres</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="uw e-mailadres" name="email">
                 <small id="emailHelp" class="form-text text-muted">We zullen uw e-mailadres niet delen met anderen</small>
@@ -66,6 +66,7 @@
     if ( isset($_GET["status"])) {
       include("./functions/functions.php");
       $status = sanitize($_GET["status"]);
+
       if ($status == "success") {
         echo "<script src='./js/registerform/success.js'></script>";
       } else if ($status == "emailexists"){

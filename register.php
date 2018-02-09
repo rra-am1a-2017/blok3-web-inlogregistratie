@@ -22,7 +22,7 @@
     $result = mysqli_query($conn, $sql);
 
     if ( mysqli_num_rows($result)) {
-    header("Location: ./index.php?status=emailexists");
+      header("Location: ./index.php?status=emailexists");
     } 
     else 
     {
