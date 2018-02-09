@@ -71,6 +71,8 @@
         echo "<script src='./js/registerform/success.js'></script>";
       } else if ($status == "emailexists"){
         echo "<script src='./js/registerform/emailexists.js'></script>";       
+      } else if ($status == "nocheck") {
+        echo "<script src='./js/registerform/nocheck.js'></script>";               
       }
     }
   ?>

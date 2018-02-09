@@ -42,7 +42,7 @@
     }  
   }
   else {
-    echo "U heeft de algemene voorwaarden niet aangevinkt";
-    header("Refresh:2; url=./index.html");
+    // Niet aangevinkt...
+    header("Location: ./index.php?status=nocheck");
   }
 ?>
