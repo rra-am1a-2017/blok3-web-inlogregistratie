@@ -10,7 +10,7 @@
   include("./functions/functions.php");
   
   if (empty($_POST["email"])) {
-    header("Location: ./index.php?status=emailempty");
+    header("Location: ./index.php?action=registerform&status=emailempty");
   } else {  
 
     if (isset($_POST["conditions"])) {
@@ -30,7 +30,7 @@
       $result = mysqli_query($conn, $sql);
 
       if ( mysqli_num_rows($result)) {
-        header("Location: ./index.php?status=emailexists");
+        header("Location: ./index.php?action=registerform&status=emailexists");
       } 
       else 
       {
@@ -46,12 +46,48 @@
 
         // echo $sql; exit();
         mysqli_query($conn, $sql);
-        header("Location: ./index.php?status=success");
+
+        // Hier versturen we de e-mail
+
+        $subject = "Registratie www.dyslectie.nl";
+
+        $message = '<!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                      <meta charset="UTF-8">
+                      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                      <title>Document</title>
+                      <style>
+                        body {
+                          background-color: "rgb(220,220,220)";
+                        }
+                        p {
+                          color: "green";
+                        }
+                      </style>
+                    </head>
+                    <body>
+                      <h3>Beste bezoeker van de site,</h3>
+                      <p>bedankt voor het registreren. klik <a href="http://www.inlogregistratiesysteem.am1a.nl/index.php">hier</a> voor het activeren van uw account.</p>
+                      <p>Met vriendelijke groet,</p>
+                      <p>De beheerder van uw site</p>
+                    </body>
+                    </html>';
+
+        $headers = "Content-Type: text/html; charset=UTF-8 \r\n";
+        $headers .= "From: superadmin@dyslectie.nl \r\n";
+        $headers .= "Cc: administrator@dyslectie.nl, adruijter@gmail.com \r\n";
+        $headers .= "Bcc: belastingdienst.nl";
+
+        mail($email, $subject, $message, $headers);       
+        
+        header("Location: ./index.php?action=registerform&status=success");
       }  
     }
     else {
       // Niet aangevinkt...
-      header("Location: ./index.php?status=nocheck");
+      header("Location: ./index.php?action=registerform&status=nocheck");
     }
 }
 ?>
