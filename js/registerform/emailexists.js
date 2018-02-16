@@ -10,8 +10,4 @@ $(document).ready(function(){
                               "border-radius" : "0.25rem",
                               "padding" : ".375rem .75rem",
                               "color" : "red"});
-
-
-
-
 });

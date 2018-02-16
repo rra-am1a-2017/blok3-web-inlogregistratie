@@ -69,7 +69,7 @@
                     </head>
                     <body>
                       <h3>Beste bezoeker van de site,</h3>
-                      <p>bedankt voor het registreren. klik <a href="http://www.inlogregistratiesysteem.am1a.nl/index.php">hier</a> voor het activeren van uw account.</p>
+                      <p>bedankt voor het registreren. klik <a href="http://www.inlogregistratiesysteem.am1a.nl/index.php?action=createpassword&status=createpassword">hier</a> voor het activeren van uw account.</p>
                       <p>Met vriendelijke groet,</p>
                       <p>De beheerder van uw site</p>
                     </body>
