@@ -21,6 +21,7 @@
             <small id="pwHelp2" class="form-text text-muted">Herhaal uw wachtwoord voor uw eigen bestwil.</small>       
           </div>
         </div>
+        <input type="hidden" name="id" value="<?php echo $_GET["id"]; ?>">
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Verzend</button>          
         </div>

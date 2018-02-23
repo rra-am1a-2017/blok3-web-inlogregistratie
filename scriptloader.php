@@ -9,7 +9,7 @@
     $status = sanitize($_GET["status"]);
 
     // Dit is een whitelist van mogelijke javascript files die geladen mogen worden
-    $white_list = array("emailempty", "emailexists", "nocheck", "success", "createpassword");
+    $white_list = array("emailempty", "emailexists", "nocheck", "success", "createpassword", "activate_success");
      
     // Als de $status waarde in de whitelist staat dan wordt dat script geladen.
     if ( in_array($status, $white_list)) {

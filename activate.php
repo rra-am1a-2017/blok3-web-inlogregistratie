@@ -3,6 +3,7 @@
 
   $password = sanitize($_POST["password"]);
   $checkpassword = sanitize($_POST["checkpassword"]);
+  $id = sanitize($_POST["id"]);
 
   if (!empty($password) && !empty($checkpassword)) {
 
@@ -10,15 +11,17 @@
 
       include("./connect_db.php");
       $blowfish_password = password_hash($password, PASSWORD_BCRYPT);
-      echo $blowfish_password; exit();
+      
+      $sql = "UPDATE `login` SET `password`  = '{$blowfish_password}',
+                                 `activated` = 'yes' 
+                                 
+                           WHERE `id` = {$id};";
 
-      $sql = "";
-      echo "Opslaan";
+      mysqli_query($conn, $sql);
+      header("Location: ./index.php?action=createpassword&status=activate_success");
     } else {
       echo "wachtwoorden zijn niet gelijk";
-    }
-
-    
+    }    
   } else {
     echo "Een van beide velden niet ingevuld";
   }
