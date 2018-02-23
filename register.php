@@ -38,11 +38,15 @@
         $sql = "INSERT INTO `login` (`id`,
                                     `email`,
                                     `conditions`,
-                                    `userrole`)
+                                    `userrole`,
+                                    `password`,
+                                    `activated`)
                             VALUES  (NULL, 
                                     '" . $email ."', 
                                     '" . $conditions . "',
-                                    'subscriber');";
+                                    'subscriber',
+                                    '',
+                                    'no');";
 
         // echo $sql; exit();
         mysqli_query($conn, $sql);
