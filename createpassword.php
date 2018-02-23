@@ -20,8 +20,9 @@
             <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Herhaal wachtwoord" name="checkpassword">
             <small id="pwHelp2" class="form-text text-muted">Herhaal uw wachtwoord voor uw eigen bestwil.</small>       
           </div>
+          <input type="hidden" name="id" value="<?php echo $_GET["id"]; ?>">          
         </div>
-        <input type="hidden" name="id" value="<?php echo $_GET["id"]; ?>">
+        
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Verzend</button>          
         </div>

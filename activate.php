@@ -23,7 +23,6 @@
       echo "wachtwoorden zijn niet gelijk";
     }    
   } else {
-    echo "Een van beide velden niet ingevuld";
+    header("Location: ./index.php?action=createpassword&status=activate_empty&id=".$id);
   }
-
 ?>
