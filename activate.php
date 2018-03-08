@@ -20,9 +20,9 @@
       mysqli_query($conn, $sql);
       header("Location: ./index.php?action=createpassword&status=activate_success");
     } else {
-      echo "wachtwoorden zijn niet gelijk";
+      header("Location: ./index.php?action=createpassword&status=nomatchpassword&id=" . $id);
     }    
   } else {
-    header("Location: ./index.php?action=createpassword&status=activate_empty&id=".$id);
+    header("Location: ./index.php?action=createpassword&status=activate_empty&id=" . $id);
   }
 ?>
