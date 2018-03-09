@@ -23,10 +23,35 @@
 
       if (password_verify($password, $record["password"])) {
         //ga verder met inlogprocedure
+
+        session_start();
+
+        $_SESSION["userrole"] = $record["userrole"];
+        $_SESSION["email"] = $record["email"];
+        $_SESSION["id"] = $record["id"];
+
+        //var_dump($_SESSION); exit();
+
+
+        switch ($record["userrole"]) {
+          case "subscriber":
+            header("Location: ./index.php?action=subscriber_home");
+            break;
+          case "superadmin":
+            header("Location: ./index.php?action=superadmin_home");
+            break;
+          case "administrator":
+            header("Location: ./index.php?action=administrator_home");
+            break;
+          default:
+            header("Location: ./index.php?action=home");            
+            break; 
+        }
+
+
       } else {
         header("Location: ./index.php?action=loginform&status=accessdenied");        
       }
-
     } else {
       header("Location: ./index.php?action=loginform&status=accessdenied");
     }
