@@ -1,3 +1,16 @@
+<?php
+  include("./connect_db.php");
+
+  $sql = "SELECT * FROM `login` WHERE `id` = {$_GET["id"]}";
+
+  $result = mysqli_query($conn, $sql);
+
+  $record = mysqli_fetch_array($result);
+
+  if ( $record["activated"] == 'yes') {
+    header("Location: ./index.php?action=home");
+  }
+?>
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
