@@ -18,7 +18,7 @@
                            WHERE `id` = {$id};";
 
       mysqli_query($conn, $sql);
-      header("Location: ./index.php?action=createpassword&status=activate_success");
+      header("Location: ./index.php?action=createpassword&status=activate_success&id=" . $id);
     } else {
       header("Location: ./index.php?action=createpassword&status=nomatchpassword&id=" . $id);
     }    

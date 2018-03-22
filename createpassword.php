@@ -1,12 +1,17 @@
 <?php
+  // Maak contact met de mysql-server
   include("./connect_db.php");
 
+  // Maak een select query om het record te vinden behorende bij het id
   $sql = "SELECT * FROM `login` WHERE `id` = {$_GET["id"]}";
 
+  // Vuur de query af op de database
   $result = mysqli_query($conn, $sql);
 
+  // Maak van wat je terugkrijgt uit de database een array
   $record = mysqli_fetch_array($result);
 
+  // Als het veld activated binnen het record de waarde yes heeft, doorsturen naar de normale homepage
   if ( $record["activated"] == 'yes') {
     header("Location: ./index.php?action=home");
   }
