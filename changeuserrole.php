@@ -1,13 +1,38 @@
 <?php
+  $userroles = array("superadmin");
+  include("./security.php");
+
   include("./connect_db.php");
 
   $sql = "SELECT * FROM `login`";
 
   $result = mysqli_query($conn, $sql);
 
+  function match($userrole, $option) {
+    if ($userrole == $option) {
+      return "selected";
+    }
+  }
+
   $tableContent = "";
   while ($record = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-    $tableContent .= "<tr><th>" . $record["id"] . "</th><td>" . $record["email"] . "</td><td>" . $record["userrole"] . "</td></tr>";    
+    $tableContent .= "<tr>
+                        <form action='./changeuserrole_action.php' method='post'>
+                            <th>" . $record["id"] . "</th>
+                            <td>" . $record["email"] . "</td>
+                            <td>
+                              <select class='custom-select custom-select-sm' name='userrole'>
+                                <option value='subscriber' " . match($record["userrole"], "subscriber" ) . ">subscriber</option>
+                                <option value='administrator' " . match($record["userrole"], "administrator") . ">administrator</option>
+                                <option value='superadmin' " . match($record["userrole"], "superadmin") . ">superadmin</option>
+                              </select>                       
+                            </td>
+                            <td>
+                              <input type='hidden' name='id' value='" . $record["id"] . "'>
+                              <button type='submit' class='btn btn-outline-info btn-sm'>verander</button>
+                            </td>
+                        </form>
+                      </tr>";    
   }
 ?>
 
